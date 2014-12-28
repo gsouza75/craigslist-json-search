@@ -1,0 +1,24 @@
+{
+  "name": "craigslist-json-search",
+  "version": "0.0.1",
+  "description": "Craigslist JSON search service",
+  "keywords": [
+    "craigslist",
+    "search",
+    "json"
+  ],
+  "author": "Gustavo Souza <gsouza75@gmail.com>",
+  "dependencies": {
+    "cheerio": "^0.18.0",
+    "debug": "^2.1.0",
+    "lodash": "^2.4.1",
+    "q": "^1.1.2",
+    "request": "^2.51.0"
+  },
+  "main": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gsouza75/craigslist-json-search"
+  },
+  "engine": "node >= 0.10.x"
+}

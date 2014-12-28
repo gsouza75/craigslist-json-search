@@ -1,7 +1,7 @@
 {
   "name": "craigslist-json-search",
   "version": "0.0.1",
-  "description": "Craigslist JSON search service",
+  "description": "Craigslist JSON search",
   "keywords": [
     "craigslist",
     "search",
@@ -20,5 +20,14 @@
     "type": "git",
     "url": "https://github.com/gsouza75/craigslist-json-search"
   },
-  "engine": "node >= 0.10.x"
+  "engine": "node >= 0.10.x",
+  "bugs": {
+    "url": "https://github.com/gsouza75/craigslist-json-search/issues"
+  },
+  "homepage": "https://github.com/gsouza75/craigslist-json-search",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
 }

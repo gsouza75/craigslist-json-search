@@ -2,7 +2,7 @@
 
 var _ = require('lodash');
 var cheerio = require('cheerio');
-var debug = require('debug')('craigslist-search');
+var debug = require('debug')('craigslist-json-search');
 var q = require('q');
 var request = q.nbind(require('request'));
 var url = require('url');

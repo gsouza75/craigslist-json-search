@@ -34,10 +34,10 @@ module.exports = Object.create({
 
       $ = cheerio.load(body);
       fn = typeof self.options.parse === 'function' ?
-        self.options.parse : parse;
+        self.options.parse : self.parse;
 
       result = $('.content .row').map(function () {
-        return fn($(this));
+        return fn($(this), host);
       });
 
       deferred.resolve(result.get());
@@ -46,28 +46,6 @@ module.exports = Object.create({
     function error(err) {
       debug('Search query failed: %s', err);
       deferred.reject(err);
-    }
-
-    function parse($post) {
-      var baesUrl, $anchor, $pl, $cat;
-
-      baesUrl = 'http://' + host;
-      $anchor = $post.find('a.i');
-      $pl = $post.find('.txt .pl');
-      $cat = $post.find('.l2 .gc');
-
-      return {
-        pid: $post.attr('data-pid'),
-        href: baesUrl + $anchor.attr('href'),
-        price: $anchor.find('.price').text(),
-        text: $pl.find('.hdrlnk').text(),
-        time: Date.parse($pl.find('time').attr('datetime')),
-        category: {
-          href: baesUrl + $cat.attr('href'),
-          id: $cat.attr('data-cat'),
-          text: $cat.text()
-        }
-      };
     }
 
     this.setOptions(options);
@@ -85,6 +63,28 @@ module.exports = Object.create({
     .done();
 
     return deferred.promise;
+  },
+
+  parse: function($post, host) {
+    var baesUrl, $anchor, $pl, $cat;
+
+    baesUrl = 'http://' + host;
+    $anchor = $post.find('a.i');
+    $pl = $post.find('.txt .pl');
+    $cat = $post.find('.l2 .gc');
+
+    return {
+      pid: $post.attr('data-pid'),
+      href: baesUrl + $anchor.attr('href'),
+      price: $anchor.find('.price').text(),
+      text: $pl.find('.hdrlnk').text(),
+      time: Date.parse($pl.find('time').attr('datetime')),
+      category: {
+        href: baesUrl + $cat.attr('href'),
+        id: $cat.attr('data-cat'),
+        text: $cat.text()
+      }
+    };
   },
 
   getHost: function () {
